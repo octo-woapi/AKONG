@@ -53,8 +53,6 @@ services:
       - kong-migrations
     links:
       - kong-database:kong-database
-    volumes:
-      - ./tmp:/tmp
 
   konga:
     image: pantsel/konga
