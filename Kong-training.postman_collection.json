@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "efc3c749-6ebb-470b-b9ef-c63bf301221e",
+		"name": "Kong-training",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24753661"
+	},
+	"item": [
+		{
+			"name": "create-service",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "create-route",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "paths",
+							"value": "/my-api",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/services/example_service/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"services",
+						"example_service",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test-api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/my-api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"my-api"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
