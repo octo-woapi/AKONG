@@ -1,0 +1,13 @@
+1- Pour créer un service il faut effectuer un POST sur /services
+
+http POST localhost:8001/services name=example_service host=mockbin.org path=/
+
+2- On lui attribue ensuite une route :
+
+http POST http://localhost:8001/services/example_service/routes paths='["/my-api"]'
+
+3- L'API est maintenant accessible à partir de l'url:
+
+http GET  http://localhost:8000/my-api
+
+
