@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "3efe2bab-3df4-47c6-913d-6364631575cb",
+		"name": "Kong-training",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24753661"
+	},
+	"item": [
+		{
+			"name": "create-service",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-route",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "paths",
+							"value": "/my-api",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/services/example_service/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"services",
+						"example_service",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test-api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/my-api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"my-api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create consumer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "luka",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"consumers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-api-key-to-gateway-level",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "key-auth",
+							"type": "text"
+						},
+						{
+							"key": "config.key_names",
+							"value": "apikey",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/plugins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"plugins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-key-auth-to-service",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "key-auth",
+							"type": "text"
+						},
+						{
+							"key": "config.key_names",
+							"value": "apikey",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/services/example_service/plugins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"services",
+						"example_service",
+						"plugins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-key-auth-to-route",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "key-auth",
+							"type": "text"
+						},
+						{
+							"key": "config.key_names",
+							"value": "apikey",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/routes/mockbin_route/plugins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"routes",
+						"mockbin_route",
+						"plugins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-api-without-api-key-return-401-when-api-key-enabled",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/mock/request",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mock",
+						"request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-api-with-api-key",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "top-secret-key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/mock/request",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mock",
+						"request"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
